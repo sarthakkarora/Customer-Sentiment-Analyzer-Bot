@@ -1,126 +1,157 @@
-# AI Customer Experience Specialist
+# Customer Experience Prediction System
 
-An intelligent system for handling customer complaints and generating personalized responses using advanced AI capabilities.
+A sophisticated system for analyzing and predicting customer experience using advanced machine learning and real-time processing capabilities.
 
 ## Features
 
-- **Advanced AI Integration**
-  - OpenAI-powered response generation
-  - NLP-based complaint analysis
-  - Context-aware compensation strategies
-  - Sentiment analysis and emotional intelligence
+- **Real-time Processing**
+  - Kafka-based message queuing
+  - WebSocket notifications
+  - Redis caching
+  - Elasticsearch storage
 
-- **Smart Response Generation**
-  - Dynamic tone adjustment based on customer sentiment
-  - Predictive resolutions for common issues
-  - LTV-based compensation and actions
-  - Personalized response generation
-  - VIP customer recognition
-  - Automated ticket ID generation
+- **Advanced Analytics**
+  - Customer segmentation
+  - Trend analysis
+  - Correlation analysis
+  - Time series forecasting
+  - Interactive visualizations
 
-- **Natural Language Processing**
-  - Entity extraction
-  - Key phrase identification
-  - Contextual understanding
-  - Conversation history tracking
+- **Automated Reporting**
+  - Daily reports
+  - Weekly reports
+  - Custom reports
+  - PDF generation
+  - Interactive dashboards
+
+- **Machine Learning Models**
+  - Sentiment analysis
+  - Emotion detection
+  - Churn prediction
+  - Response quality assessment
 
 ## Installation
 
-1. Clone this repository
-2. Install the required dependencies:
+1. Clone the repository:
+```bash
+git clone https://github.com/sarthakkarora/customer-sentiment-analyzer-bot.git
+cd customer-sentiment-analyzer-bot
+```
+
+2. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Download the spaCy model:
-```bash
-python -m spacy download en_core_web_sm
-```
-
-4. Create a `.env` file:
+4. Set up environment variables:
 ```bash
 cp .env.example .env
+# Edit .env with your configuration
 ```
 
-5. Add your OpenAI API key to the `.env` file:
-```
-OPENAI_API_KEY=your_api_key_here
+5. Install wkhtmltopdf (required for PDF generation):
+```bash
+# On macOS
+brew install wkhtmltopdf
+
+# On Ubuntu/Debian
+sudo apt-get install wkhtmltopdf
+
+# On Windows
+# Download from https://wkhtmltopdf.org/downloads.html
 ```
 
 ## Usage
 
-```python
-from customer_experience_specialist import CustomerInfo, CustomerExperienceSpecialist
-
-# Create a customer instance
-customer = CustomerInfo(
-    name="John Doe",
-    complaint="My package was delivered late and the product was defective",
-    sentiment="angry",
-    is_vip=True,
-    lifetime_value=1500.00,
-    order_history={"total_orders": 10, "return_rate": 0.05},
-    previous_complaints=["Late delivery last month"],
-    last_interaction_notes="Customer prefers email communication"
-)
-
-# Initialize the specialist
-specialist = CustomerExperienceSpecialist(
-    company_name="Your Company",
-    agent_name="Your Name",
-    agent_number="+1-555-123-4567"
-)
-
-# Generate the response
-response = specialist.generate_response(customer)
-print(response)
+1. Start the real-time processor:
+```bash
+python real_time_processor.py
 ```
 
-## AI-Enhanced Response Format
+2. Start the analytics service:
+```bash
+python analytics.py
+```
 
-The system generates sophisticated responses using AI:
+3. Generate reports:
+```bash
+python report_generator.py
+```
 
-1. **Complaint Analysis**
-   - NLP-based entity extraction
-   - Sentiment analysis
-   - Context understanding
+## Project Structure
 
-2. **Personalized Response**
-   - AI-generated empathetic opening
-   - Context-aware solutions
-   - Dynamic compensation strategies
+```
+.
+├── analytics.py           # Advanced analytics module
+├── config.py             # Configuration settings
+├── customer_experience_specialist.py  # Main processing logic
+├── database_schema.sql   # Database schema
+├── ml_models.py          # Machine learning models
+├── monitoring.py         # System monitoring
+├── real_time_processor.py # Real-time processing
+├── report_generator.py   # Report generation
+├── requirements.txt      # Dependencies
+├── templates/            # HTML templates
+│   ├── daily_report.html
+│   ├── weekly_report.html
+│   └── custom_report.html
+└── .env.example         # Environment variables template
+```
 
-3. **Follow-up**
-   - Personal contact information
-   - Special offers
-   - Conversation history tracking
+## API Documentation
 
-## Customization
+### Real-time Processing
 
-You can customize the AI behavior by modifying:
+- **POST /api/complaints**
+  - Process customer complaints in real-time
+  - Returns sentiment analysis and risk assessment
 
-1. **OpenAI Configuration**
-   - Model selection (GPT-3.5 or GPT-4)
-   - Temperature settings
-   - Token limits
+- **POST /api/responses**
+  - Process agent responses
+  - Returns quality assessment and recommendations
 
-2. **Response Templates**
-   - System prompts
-   - Compensation strategies
-   - Follow-up procedures
+### Analytics
 
-3. **NLP Settings**
-   - Entity recognition rules
-   - Key phrase extraction
-   - Sentiment analysis parameters
+- **GET /api/segments**
+  - Get customer segments analysis
+  - Returns segment characteristics and metrics
 
-## Advanced Features
+- **GET /api/trends**
+  - Get trend analysis
+  - Returns time series data and forecasts
 
-- **Conversation History**: Tracks all customer interactions
-- **Context Analysis**: Deep understanding of complaint context
-- **Dynamic Compensation**: AI-powered compensation strategies
-- **Multi-turn Support**: Maintains context across interactions
+### Reports
+
+- **GET /api/reports/daily**
+  - Generate daily report
+  - Returns PDF report
+
+- **GET /api/reports/weekly**
+  - Generate weekly report
+  - Returns PDF report
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-MIT License 
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- TensorFlow for machine learning capabilities
+- Elasticsearch for data storage and search
+- Kafka for real-time message processing
+- Plotly for interactive visualizations
+
