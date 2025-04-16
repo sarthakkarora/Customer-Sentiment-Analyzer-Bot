@@ -21,8 +21,8 @@ wheels/
 *.egg
 
 # Virtual Environment
+.venv/
 venv/
-env/
 ENV/
 
 # IDE
@@ -33,9 +33,15 @@ ENV/
 
 # Environment variables
 .env
+.env.local
 
 # Logs
 *.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Elasticsearch
 elasticsearch/
