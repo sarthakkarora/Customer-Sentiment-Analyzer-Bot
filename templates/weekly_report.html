@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weekly Customer Experience Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .metric {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .visualization {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .finding {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        .trend {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Weekly Customer Experience Report</h1>
+        <p>Period: {{ start_date }} to {{ end_date }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Weekly Metrics</h2>
+        <div class="metric">
+            <h3>Average Sentiment</h3>
+            <p>{{ weekly_metrics.avg_sentiment | round(2) }}</p>
+        </div>
+        <div class="metric">
+            <h3>Average Churn Risk</h3>
+            <p>{{ weekly_metrics.avg_churn_risk | round(2) }}</p>
+        </div>
+        <div class="metric">
+            <h3>Total Interactions</h3>
+            <p>{{ weekly_metrics.total_interactions }}</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Customer Segments</h2>
+        <div class="visualization">
+            {{ visualizations.segments | safe }}
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Weekly Trends</h2>
+        <div class="visualization">
+            {{ visualizations.trends | safe }}
+        </div>
+        {% if not trends.stationary %}
+        <div class="trend">
+            <h3>Non-Stationary Trend Detected</h3>
+            <p>The sentiment trend shows significant changes over the week, indicating potential areas for investigation.</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h2>Key Findings</h2>
+        {% for finding in key_findings %}
+        <div class="finding">
+            <h3>{{ finding.type }}</h3>
+            <p>{{ finding.implication }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h2>Recommendations</h2>
+        <ul>
+            {% if weekly_metrics.avg_churn_risk > 0.7 %}
+            <li>Implement targeted retention strategies for high-risk customer segments</li>
+            {% endif %}
+            {% if weekly_metrics.avg_sentiment < 0 %}
+            <li>Review and improve customer service processes</li>
+            {% endif %}
+            {% if weekly_metrics.total_interactions < 100 %}
+            <li>Consider increasing customer engagement initiatives</li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html> 
