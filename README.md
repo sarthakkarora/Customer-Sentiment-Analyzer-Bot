@@ -1,4 +1,4 @@
-# Customer Experience Prediction System - SA
+# Customer Experience Prediction System 
 
 A sophisticated system for analyzing and predicting customer experience using advanced machine learning and real-time processing capabilities.
 
