@@ -60,8 +60,6 @@ cp .env.example .env
 # On macOS
 brew install wkhtmltopdf
 
-# On Ubuntu/Debian
-sudo apt-get install wkhtmltopdf
 
 # On Windows
 # Download from https://wkhtmltopdf.org/downloads.html
