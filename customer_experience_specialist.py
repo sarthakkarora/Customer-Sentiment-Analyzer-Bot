@@ -21,7 +21,7 @@ from sqlalchemy.orm import sessionmaker
 from celery import Celery
 import redis
 
-# Load environment variables
+
 load_dotenv()
 
 # Initialize OpenAI client
