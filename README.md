@@ -86,7 +86,7 @@ python report_generator.py
 
 ```
 .
-├── analytics.py           # Advanced analytics module
+├── analytics.py           
 ├── config.py             # Configuration settings
 ├── customer_experience_specialist.py  # Main processing logic
 ├── database_schema.sql   # Database schema
